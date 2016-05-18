@@ -8,7 +8,7 @@ const
     Servo = require('./servo'),
     Sensor = require('./sensor'),
     Led = require('./led'),
-    humidityLogs = require('../api/logs/logs.controller');
+    humidityLogs = require('../api/logs/logs.controller'),
     PERIOD = 1000 * 5;
 
 class WaterMachine {
