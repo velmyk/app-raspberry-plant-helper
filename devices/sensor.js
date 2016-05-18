@@ -13,12 +13,18 @@ class Sensor {
     }
 
     read() {
-        this.humidity = sensorLib.read().humidity.toFixed(2);
-        console.log(`Humidity: ${this.humidity}`);
+        return new Promise((resolve, reject) => {
+            try {
+                this.lastHumidityValue = sensorLib.read().humidity.toFixed(2);
+                console.log(`Humidity: ${this.lastHumidityValue}`);
+                resolve(this.lastHumidityValue);
+            } catch(err) {
+                reject(err);
+            }
+        });
     }
 
     isHumidityNormal() {
-        this.read();
         return this.humidity > MIN_HUMIDITY;
     }
 }
