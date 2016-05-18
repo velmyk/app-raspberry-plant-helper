@@ -1,3 +1,7 @@
-NODE_ENV=development
-PORT=9000
-MONGODB_URI=mongodb://admin:123123@ds025792.mlab.com:25792/raspberry-plant-helper
+# Plants Watering Machine
+
+Server for Raspberry Pi to transform it to plant watering machine.
+
+## Hardware
+
+![Screenshots](/src/README/board.jpg)
