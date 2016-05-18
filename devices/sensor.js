@@ -9,7 +9,7 @@ const
 class Sensor {
     constructor() {
         sensorLib.initialize(22, 4);
-        this.humidity = null;
+        this.lastHumidityValue = null;
     }
 
     read() {
@@ -25,7 +25,7 @@ class Sensor {
     }
 
     isHumidityNormal() {
-        return this.humidity > MIN_HUMIDITY;
+        return this.lastHumidityValue > MIN_HUMIDITY;
     }
 }
 

@@ -14,15 +14,17 @@ const
     server = require('http').Server(app),
     waterMachine = new WaterMachine();
 
-// mongoose.connect(process.env.MONGODB_URI, new Boolean(process.env.MONGO_OPTIONS_DB_SAFE));
-// mongoose.connection.on('error', (err) => {
-//         console.error('MongoDB connection error: ' + err);
-//         process.exit(-1);
-//     }
-// );
+mongoose.connect(`mongodb://<${process.env.MONGODB_USER}>:<${process.env.MONGODB_PASSWORD}>@ds025792.mlab.com:25792/raspberry-plant-helper`);
+mongoose.connection.on('error', (err) => {
+        console.error('MongoDB connection error: ' + err);
+        process.exit(-1);
+    }
+);
+
+require('./api/routes')(app);
 
 // waterMachine.run();
 
 server.listen(process.env.PORT, process.env.IP, () => {
-    console.log(`Express server listening on ${process.env.PORT}, in ${process.env.NODE_ENV} mode`);
+    console.log(`Express server listening on ${process.env.PORT});
 });

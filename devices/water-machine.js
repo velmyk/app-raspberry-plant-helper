@@ -8,6 +8,7 @@ const
     Servo = require('./servo'),
     Sensor = require('./sensor'),
     Led = require('./led'),
+    humidityLogs = require('../api/logs/logs.controller');
     PERIOD = 1000 * 5;
 
 class WaterMachine {
@@ -30,21 +31,27 @@ class WaterMachine {
     run() {
         this.sensor.read()
             .then(humidity => {
-                if(!this.sensor.isHumidityNormal()) {
+                if (!this.sensor.isHumidityNormal(humidity)) {
                     this.servo.push();
                     setTimeout(() => {
                         this.servo.release();
                     }, 1000);
                 }
-		this.led.signal();
+                let log = {
+                    humidity: humidity,
+                    time: new Date()
+                };
+                humidityLogs.add(log)
+                    .then(() => this.led.signal());
+                    
                 setTimeout(() => {
                     this.run();
                 }, PERIOD);
             })
-	.catch(error => {
-		console.error(`Sensor error: ${error}`);
-		process.exit(-1);
-});
+        	.catch(error => {
+        		console.error(`Sensor error: ${error}`);
+        		process.exit(-1);
+            });
     }
 }
 
