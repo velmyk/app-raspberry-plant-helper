@@ -9,32 +9,23 @@ const
     Sensor = require('./sensor'),
     PERIOD = 1000 * 5;
 
-// let
-//     servo,
-//     sensor;
-
-// board.on('ready', () => {
-//     servo = new Servo();
-//     sensor.initialize() ? runWaterMachine() : console.warn('Failed to initialize sensor');
-// });
-
 class WaterMachine {
     constructor() {
         this.board = new five.Board({
             io: new raspi()
         });
         this.board.on('ready', () => {
-            this.sensor = new Sensor();
-            this.servo = new Servo();
-		console.log('board ready');
-this.run();
+            this.initializeDevices();
+            this.run();
         });
     }
 
-    run() {  
-//        let
-//            humidity = this.sensor.read();
+    initializeDevices() {
+        this.sensor = new Sensor();
+        this.servo = new Servo();
+    }
 
+    run() {
         if(!this.sensor.isHumidityNormal()) {
             this.servo.push();
             setTimeout(() => {

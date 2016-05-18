@@ -6,19 +6,6 @@ const
 const
     MIN_HUMIDITY = 50;
 
-// const
-//     sensor = {
-//         initialize: () => sensorLib.initialize(22, 4),
-//         read: () => {
-//             const
-//                 readout = sensorLib.read();
-
-//             console.log(`Temperature: ${readout.temperature.toFixed(2)}C, humidity: ${readout.humidity.toFixed(2)}%`);
-//             return readout.humidity.toFixed(2);
-//         },
-//         isHumidityNormal: humidity => humidity > MIN_HUMIDITY
-//     };
-
 class Sensor {
     constructor() {
         sensorLib.initialize(22, 4);
@@ -31,7 +18,7 @@ class Sensor {
     }
 
     isHumidityNormal() {
-	this.read();
+        this.read();
         return this.humidity > MIN_HUMIDITY;
     }
 }
