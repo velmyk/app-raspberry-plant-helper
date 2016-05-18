@@ -12,7 +12,7 @@ class Led {
 		this.led.strobe(1000);
 		setTimeout(() => {
 			this.led.stop().off()
-		}, 1000);
+		}, 1500);
 	}
 };
 

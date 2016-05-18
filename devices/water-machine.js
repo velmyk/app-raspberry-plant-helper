@@ -36,13 +36,15 @@ class WaterMachine {
                         this.servo.release();
                     }, 1000);
                 }
-            })
-            .finaly(() => {
-                this.led.signal();
+		this.led.signal();
                 setTimeout(() => {
                     this.run();
                 }, PERIOD);
-            });
+            })
+	.catch(error => {
+		console.error(`Sensor error: ${error}`);
+		process.exit(-1);
+});
     }
 }
 
