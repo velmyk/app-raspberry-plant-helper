@@ -1,5 +1,7 @@
+'use strict';
+
 const
-    sensorLib = require('node-dht-sensor'),
+    sensorLib = require('node-dht-sensor');
 
 const
     MIN_HUMIDITY = 50;
@@ -25,10 +27,13 @@ class Sensor {
 
     read() {
         this.humidity = sensorLib.read().humidity.toFixed(2);
-        console.log(`Temperature: ${readout.temperature.toFixed(2)}C, humidity: ${readout.humidity.toFixed(2)}%`);
+        console.log(`Humidity: ${this.humidity}`);
     }
 
     isHumidityNormal() {
+	this.read();
         return this.humidity > MIN_HUMIDITY;
     }
 }
+
+module.exports = Sensor;

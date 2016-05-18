@@ -21,7 +21,7 @@ const
 //     }
 // );
 
-waterMachine.run();
+// waterMachine.run();
 
 server.listen(process.env.PORT, process.env.IP, () => {
     console.log(`Express server listening on ${process.env.PORT}, in ${process.env.NODE_ENV} mode`);

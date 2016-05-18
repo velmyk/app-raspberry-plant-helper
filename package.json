@@ -29,6 +29,8 @@
     "express": "4.13.4",
     "johnny-five": "0.9.49",
     "mongoose": "4.4.17",
-    "q": "1.4.1"
+    "node-dht-sensor": "0.0.12",
+    "q": "1.4.1",
+    "raspi-io": "^6.0.1"
   }
 }

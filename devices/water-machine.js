@@ -1,3 +1,5 @@
+'use strict';
+
 const
     raspi = require('raspi-io'),
     five = require('johnny-five');
@@ -5,7 +7,7 @@ const
 const
     Servo = require('./servo'),
     Sensor = require('./sensor'),
-    PERIOD = 1000 * 60;
+    PERIOD = 1000 * 5;
 
 // let
 //     servo,
@@ -22,18 +24,20 @@ class WaterMachine {
             io: new raspi()
         });
         this.board.on('ready', () => {
-            this.sensor = new Sensor;
-            this.servo = new Servo;
+            this.sensor = new Sensor();
+            this.servo = new Servo();
+		console.log('board ready');
+this.run();
         });
     }
 
     run() {  
-        let
-            humidity = this.sensor.read();
+//        let
+//            humidity = this.sensor.read();
 
         if(!this.sensor.isHumidityNormal()) {
             this.servo.push();
-            setTimeout(function() {
+            setTimeout(() => {
                 this.servo.release();
             }, 1000);
         }
@@ -43,3 +47,5 @@ class WaterMachine {
         }, PERIOD);
     }
 }
+
+module.exports = WaterMachine;
