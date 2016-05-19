@@ -24,3 +24,14 @@ Server for Raspberry Pi to transform it to plant watering machine.
 3. Led:
     - 9 phisical pin (GND)
     - 13 phisical pin (GPIO 27)
+
+- install Rasbian OS to MiniSD Card
+- install card to Raspbery
+- Connect LAN to Raspberry and micro USB for charging
+- in terminal run `arp -a` to display all devices in your network and find your Raspberry
+- connect to Raspberry via ssh `ssh pi@<your raspberry IP>` ('raspberry' is default password)
+- install NodeJS to Raspberry
+- clone repo
+- install [BCM2835](http://www.airspayce.com/mikem/bcm2835/) library
+- install dependencies `npm i`
+- run server with root `sudo PORT=<port> NODE_ENV=<env> MONGODB_USER=<user> MONGODB_PASSWORD=<password> node index.js` (MONGODB_USER and MONGODB_PASSWORD are required)
