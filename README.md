@@ -2,6 +2,8 @@
 
 Server for Raspberry Pi to transform it to plant watering machine.
 
+Servo should be installed to some water sprinkle and sensor should be placed near plant to watch humidity in area. Sensor reads humidity every 5 seconds and if humidity is lower then defined value then servo push sprinkle. Humidity value is loged to database every sensor data reading. Led blinks after every succesfull logging. 
+
 ## Hardware
 
 1. Paspberry Pi Model B+
